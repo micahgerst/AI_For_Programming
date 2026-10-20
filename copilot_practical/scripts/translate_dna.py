@@ -1,46 +1,46 @@
 #!/usr/bin/env python3
 """AI Generated code that translates a DNA sequence into a protein sequence"""
-def translate(seq):
-    # Define the standard codon table
-    codon_table = {
-        'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
-        'TCT': 'S', 'TCC': 'S', 'TCA': 'S', 'TCG': 'S',
-        'TAT': 'Y', 'TAC': 'Y', 'TAA': '*', 'TAG': '*',
-        'TGT': 'C', 'TGC': 'C', 'TGA': '*', 'TGG': 'W',
-        'CTT': 'L', 'CTC': 'L', 'CTA': 'L', 'CTG': 'L',
-        'CCT': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
-        'CAT': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
-        'CGT': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',
-        'ATT': 'I', 'ATC': 'I', 'ATA': 'I', 'ATG': 'M',
-        'ACT': 'T', 'ACC': 'T', 'ACA': 'T', 'ACG': 'T',
-        'AAT': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',
-        'AGT': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',
-        'GTT': 'V', 'GTC': 'V', 'GTA': 'V', 'GTG': 'V',
-        'GCT': 'A', 'GCC': 'A', 'GCA': 'A', 'GCG': 'A',
-        'GAT': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
-        'GGT': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G'
+def translate(seq, seq_type='DNA', codon_table=None):
+    # Standard codon table
+    standard_codon_table = {
+        'AUA': 'I', 'AUC': 'I', 'AUG': 'M', 'AUU': 'I',
+        'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACU': 'T',
+        'AAU': 'N', 'AAC': 'N', 'AAA': 'K', 'AAG': 'K',
+        'AGU': 'S', 'AGC': 'S', 'AGA': 'R', 'AGG': 'R',
+        'CUA': 'L', 'CUC': 'L', 'CUG': 'L', 'CUU': 'L',
+        'CCA': 'P', 'CCC': 'P', 'CCG': 'P', 'CCU': 'P',
+        'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
+        'CGU': 'R', 'CGC': 'R', 'CGA': 'R', 'CGG': 'R',
+        'GUA': 'V', 'GUC': 'V', 'GUG': 'V', 'GUU': 'V',
+        'GCA': 'A', 'GCC': 'A', 'GCG': 'A', 'GCU': 'A',
+        'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
+        'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGU': 'G'
     }
     
-    # Ensure the sequence is in uppercase
+    # Default to the standard codon table if none is provided
+    if codon_table is None:
+        codon_table = standard_codon_table
+    
+    # Normalize the sequence to uppercase
     seq = seq.upper()
     
-    # Initialize the protein sequence
-    protein_seq = ''
+    # Initialize a list to store the protein sequences for all reading frames
+    protein_sequences = []
     
-    # Iterate over the sequence in steps of 3
-    for i in range(0, len(seq), 3):
-        # Get the current codon
-        codon = seq[i:i+3]
-        
-        # Translate the codon to the corresponding amino acid
-        if codon in codon_table:
-            protein_seq += codon_table[codon]
-        else:
-            protein_seq += '?'
+    # Translate each reading frame
+    for frame in range(3):
+        protein_seq = []
+        for i in range(frame, len(seq), 3):
+            codon = seq[i:i+3]
+            if codon in codon_table:
+                protein_seq.append(codon_table[codon])
+            else:
+                protein_seq.append('?')  # Use '?' to indicate an unknown codon
+        protein_sequences.append(''.join(protein_seq))
     
-    return protein_seq
+    return protein_sequences
 
 # this sequence should return MILKYWAY*
 my_seq="ATGATCCTAAAATACTGGGCGTACTAG"
 my_seq_2="ATGGCCATTGTAATGGGC"
-print(translate(my_seq_2))
+print(translate(my_seq))
