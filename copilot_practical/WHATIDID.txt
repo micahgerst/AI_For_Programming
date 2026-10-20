@@ -2,3 +2,19 @@
 mkdir -p copilot_practical/{input,tmp,results,scripts}
 touch copilot_practical/WHATIDID.txt
 cd copilot_practical
+
+# Key commands to note for ollama
+serve : starts ollama
+create : creates a model
+pull : pulls a model from a repo
+list : lists models
+run : runs a model
+rm : removes a model
+
+# Download and install AI agent
+ollama pull qwen2.5-coder:7b
+
+# Run agent
+ollama run qwen2.5-coder:7b
+
+>>>Write a Python function translate(seq) that translates a nucleic acid sequence into a protein sequence using the standard codon table.
