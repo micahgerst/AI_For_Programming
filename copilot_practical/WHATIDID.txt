@@ -55,3 +55,9 @@ its confused :( doesn't know which gene.
 
 ollama ps
 allows you to see memory usage
+
+# From your exploration, what are two limitations of using a bare local model like this for real project work?
+1. Limited resources. It only has available the model you downloaded, not a greater pool of data like a cloud hosted one.
+2. Hallucinations. AI models are prone to hallucination, such as wrong NCBI accession numbers and fake packages.
+3. Cannot upload files or additional context that could help the model.
+4. Limited variation without setting temperature.
