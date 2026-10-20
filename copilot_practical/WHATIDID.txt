@@ -26,3 +26,9 @@ Took results and added to translate_dna.py.
 It got stuck trying to generate a very long dna sequence. I had to forcibly terminate it.
 
 >>> Write a Python function translate(seq) that takes a nucleic acid sequence into a protein sequence. The function should allow a user to specify whether the input is DNA or RNA, defaulting to DNA. It should by default use the standard codon table, but allow users to specify another codon table. The protein sequence should be generated for each reading frame of the nucleic acid sequence and return all three in a list.
+
+Returned function was deficient in converting between RNA and DNA. The codon table provided lacked all codons starting with U/T.
+
+>>> Provide the standard codon table in RNA bases as a Python dictionary.
+
+The dict it returned was then added to the code, which correctly translates sequences this time.
