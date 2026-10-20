@@ -32,3 +32,8 @@ Returned function was deficient in converting between RNA and DNA. The codon tab
 >>> Provide the standard codon table in RNA bases as a Python dictionary.
 
 The dict it returned was then added to the code, which correctly translates sequences this time.
+
+>>> /set parameter temperature 1
+>>> Create a python script to take in an assembly fasta file and calculate the N50 and GC content of all scaffolds present
+
+Temperature specifies how "random" the response is. A low temperature indicates low randomness and instead pulls from the most likely token to come next. A higher temperature allows the model to take some of the less likely tokens.
