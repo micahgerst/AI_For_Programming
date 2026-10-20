@@ -18,3 +18,11 @@ ollama pull qwen2.5-coder:7b
 ollama run qwen2.5-coder:7b
 
 >>>Write a Python function translate(seq) that translates a nucleic acid sequence into a protein sequence using the standard codon table.
+
+Took results and added to translate_dna.py.
+
+>>> Using the previously generated translate(seq) function, improve it by allowing the user to specify whether an RNA or DNA sequence is provided.
+
+It got stuck trying to generate a very long dna sequence. I had to forcibly terminate it.
+
+>>> Write a Python function translate(seq) that takes a nucleic acid sequence into a protein sequence. The function should allow a user to specify whether the input is DNA or RNA, defaulting to DNA. It should by default use the standard codon table, but allow users to specify another codon table. The protein sequence should be generated for each reading frame of the nucleic acid sequence and return all three in a list.

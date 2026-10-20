@@ -39,3 +39,8 @@ def translate(seq):
             protein_seq += '?'
     
     return protein_seq
+
+# this sequence should return MILKYWAY*
+my_seq="ATGATCCTAAAATACTGGGCGTACTAG"
+my_seq_2="ATGGCCATTGTAATGGGC"
+print(translate(my_seq_2))
