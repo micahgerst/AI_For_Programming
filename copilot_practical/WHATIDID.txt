@@ -42,3 +42,16 @@ Temperature specifies how "random" the response is. A low temperature indicates 
 >>> Show me how to use the Python package BioSeqMagicBox to align two FASTA files.
 
 Made it hallucinate a package that doesn't exist :3 It acknowledges at the end that BioSeqMagicBox is fictional and that a different package would be needed.
+
+# Context testing
+>>> My gene is BRCA1.
+>>> what is the NCBI accession for this gene?
+
+The ai was able to find a NCBI accession number for it: NM_000059. This is in fact the accession number for BRCA2. It insisted it was right. The correct number is NM_007294
+
+>>> /clear
+>>> what is the NCBI accession for this gene?
+its confused :( doesn't know which gene.
+
+ollama ps
+allows you to see memory usage
