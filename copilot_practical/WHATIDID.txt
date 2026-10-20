@@ -1,0 +1,4 @@
+# Created initial repos.
+mkdir -p copilot_practical/{input,tmp,results,scripts}
+touch copilot_practical/WHATIDID.txt
+cd copilot_practical
