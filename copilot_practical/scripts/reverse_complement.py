@@ -22,7 +22,13 @@ def read_fasta_sequence(path):
 def reverse_complement(seq):
     """Return the reverse complement of a DNA sequence."""
     normalized = seq.strip().upper()
-    return "".join(COMPLEMENT.get(base, base) for base in reversed(normalized))
+    try:
+        return "".join(COMPLEMENT[base] for base in reversed(normalized))
+    except KeyError as error:
+        raise ValueError(
+            f"Invalid DNA sequence character: {error.args[0]!r}. "
+            "Allowed characters are A, T, C, and G."
+        ) from error
 
 if __name__ == "__main__":
     import sys
