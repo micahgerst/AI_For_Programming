@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # reverse_complement.py
 # Reads a single-line DNA sequence from a FASTA file and prints its
 # reverse complement.
