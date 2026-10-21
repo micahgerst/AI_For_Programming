@@ -86,3 +86,7 @@ It wrote a summary. Further prompting had it write the result to summary.md.
 >>> I made a change to scripts/gc_content.py and staged it. Examine the differences and propose a commit message less than 20 words I could use. Do not modify the the script.
 
 >>> I made a change to scripts/gc_content.py in the gc-precision branch and tried merging it with the main branch. I received an error. Explain the error I received in less than 100 words. Resolve the error so that scripts/gc_content.py prints a percentage with 2 decimal points. Do not change anything else in the script.
+
+>>> Using the git log, write a short summary of the changes the AI_For_Programming repository has gone through. The summary should include the number of branches, a diagram of the branching, and a description of the current state of the repository. Do not describe each file in detail. Instead, mention important functionality and records.
+
+>>> Write a README.md file using the information in summary.md and the repository history you just generated. Be sure to include an additional line at the end that specifies this document was generated using Copilot, the model used to generate this information, and that information in this document may be false. Afterward, add all unstaged files, commit all changes with a suitable message, and create a pull request against main.
