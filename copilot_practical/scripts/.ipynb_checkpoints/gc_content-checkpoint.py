@@ -32,6 +32,11 @@ def main():
         description="Calculate GC content for each record in a FASTA file."
     )
     parser.add_argument("fasta_file", help="path to the FASTA file")
+    parser.add_argument(
+        "--min-gc",
+        type=float,
+        help="only print records with GC content above this percentage",
+    )
     args = parser.parse_args()
 
     for header, sequence in read_fasta(args.fasta_file):
@@ -39,7 +44,9 @@ def main():
             print(f"Warning: skipping empty sequence for >{header}", file=sys.stderr)
             continue
         gc_percent = 100 * sum(base in "GCgc" for base in sequence) / len(sequence)
-        print(f">{header}: {gc_percent:.2f}%")
+        if args.min_gc is not None and gc_percent <= args.min_gc:
+            continue
+        print(f">{header}: {gc_percent:.3f}%")
 
 
 if __name__ == "__main__":

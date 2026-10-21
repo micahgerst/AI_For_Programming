@@ -1,0 +1,84 @@
+# Created initial repos.
+mkdir -p copilot_practical/{input,tmp,results,scripts}
+touch copilot_practical/WHATIDID.txt
+cd copilot_practical
+
+# Key commands to note for ollama
+serve : starts ollama
+create : creates a model
+pull : pulls a model from a repo
+list : lists models
+run : runs a model
+rm : removes a model
+
+# Download and install AI agent
+ollama pull qwen2.5-coder:7b
+
+# Run agent
+ollama run qwen2.5-coder:7b
+
+>>>Write a Python function translate(seq) that translates a nucleic acid sequence into a protein sequence using the standard codon table.
+
+Took results and added to translate_dna.py.
+
+>>> Using the previously generated translate(seq) function, improve it by allowing the user to specify whether an RNA or DNA sequence is provided.
+
+It got stuck trying to generate a very long dna sequence. I had to forcibly terminate it.
+
+>>> Write a Python function translate(seq) that takes a nucleic acid sequence into a protein sequence. The function should allow a user to specify whether the input is DNA or RNA, defaulting to DNA. It should by default use the standard codon table, but allow users to specify another codon table. The protein sequence should be generated for each reading frame of the nucleic acid sequence and return all three in a list.
+
+Returned function was deficient in converting between RNA and DNA. The codon table provided lacked all codons starting with U/T.
+
+>>> Provide the standard codon table in RNA bases as a Python dictionary.
+
+The dict it returned was then added to the code, which correctly translates sequences this time.
+
+>>> /set parameter temperature 1
+>>> Create a python script to take in an assembly fasta file and calculate the N50 and GC content of all scaffolds present
+
+Temperature specifies how "random" the response is. A low temperature indicates low randomness and instead pulls from the most likely token to come next. A higher temperature allows the model to take some of the less likely tokens.
+
+# Time to test hallucinations.
+>>> Show me how to use the Python package BioSeqMagicBox to align two FASTA files.
+
+Made it hallucinate a package that doesn't exist :3 It acknowledges at the end that BioSeqMagicBox is fictional and that a different package would be needed.
+
+# Context testing
+>>> My gene is BRCA1.
+>>> what is the NCBI accession for this gene?
+
+The ai was able to find a NCBI accession number for it: NM_000059. This is in fact the accession number for BRCA2. It insisted it was right. The correct number is NM_007294
+
+>>> /clear
+>>> what is the NCBI accession for this gene?
+its confused :( doesn't know which gene.
+
+ollama ps
+allows you to see memory usage
+
+# From your exploration, what are two limitations of using a bare local model like this for real project work?
+1. Limited resources. It only has available the model you downloaded, not a greater pool of data like a cloud hosted one.
+2. Hallucinations. AI models are prone to hallucination, such as wrong NCBI accession numbers and fake packages.
+3. Cannot upload files or additional context that could help the model.
+4. Limited variation without setting temperature.
+
+# GitHub Copilot
+Installed copilot and tested prompting it.
+
+Used provided information to create reverse_complement.py. Allowed copilot to bugfix it.
+
+>>> Create a Python script called gc_content.py in scripts/ that:
+1. Takes a FASTA file path as a command-line argument.
+2. Reads all sequences in the file (it may contain multiple records).
+3. For each record, prints its header and its GC content as a percentage,
+   rounded to 2 decimal places.
+4. Includes a small docstring and handles the case of an empty sequence
+   (skip it with a warning, don't crash).
+Do not add any other files or dependencies outside the Python standard library.
+
+Created gc_content.py using Copilot.
+
+# Prompt Engineering
+>>> Write a short markdown summary of about 100 words about scripts/gc_content.py for a new Python learner. The summary should explain both the read_fasta() and main() functions. Do not write a summary for any other function or script.
+
+It wrote a summary. Further prompting had it write the result to summary.md.

@@ -46,7 +46,7 @@ def main():
         gc_percent = 100 * sum(base in "GCgc" for base in sequence) / len(sequence)
         if args.min_gc is not None and gc_percent <= args.min_gc:
             continue
-        print(f">{header}: {gc_percent:.2f}%")
+        print(f">{header}: {gc_percent:.3f}%")
 
 
 if __name__ == "__main__":
