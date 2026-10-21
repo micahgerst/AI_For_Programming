@@ -61,3 +61,8 @@ allows you to see memory usage
 2. Hallucinations. AI models are prone to hallucination, such as wrong NCBI accession numbers and fake packages.
 3. Cannot upload files or additional context that could help the model.
 4. Limited variation without setting temperature.
+
+# GitHub Copilot
+Installed copilot and tested prompting it.
+
+Used provided information to
