@@ -65,4 +65,20 @@ allows you to see memory usage
 # GitHub Copilot
 Installed copilot and tested prompting it.
 
-Used provided information to
+Used provided information to create reverse_complement.py. Allowed copilot to bugfix it.
+
+>>> Create a Python script called gc_content.py in scripts/ that:
+1. Takes a FASTA file path as a command-line argument.
+2. Reads all sequences in the file (it may contain multiple records).
+3. For each record, prints its header and its GC content as a percentage,
+   rounded to 2 decimal places.
+4. Includes a small docstring and handles the case of an empty sequence
+   (skip it with a warning, don't crash).
+Do not add any other files or dependencies outside the Python standard library.
+
+Created gc_content.py using Copilot.
+
+# Prompt Engineering
+>>> Write a short markdown summary of about 100 words about scripts/gc_content.py for a new Python learner. The summary should explain both the read_fasta() and main() functions. Do not write a summary for any other function or script.
+
+It wrote a summary. Further prompting had it write the result to summary.md.
