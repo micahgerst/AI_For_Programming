@@ -3,19 +3,32 @@
 # Reads a single-line DNA sequence from a FASTA file and prints its
 # reverse complement.
 
-COMPLEMENT = {"A": "T", "T": "A", "C": "G", "G": "C"}
+COMPLEMENT = {"A": "T", "T": "A", "C": "G", "G": "C",
+              "a": "t", "t": "a", "c": "g", "g": "c"}
+
 
 def read_fasta_sequence(path):
-    """Return the sequence (str) from a single-record FASTA file."""
+    """Return the DNA sequence from a FASTA file, ignoring the header."""
     with open(path) as f:
-        lines = f.readlines()
-    return "".join(lines).replace("\n", "")
+        sequence_parts = []
+        for line in f:
+            stripped = line.strip()
+            if not stripped or stripped.startswith(">"):
+                continue
+            sequence_parts.append(stripped)
+    return "".join(sequence_parts)
+
 
 def reverse_complement(seq):
     """Return the reverse complement of a DNA sequence."""
-    pass
+    normalized = seq.strip().upper()
+    return "".join(COMPLEMENT.get(base, base) for base in reversed(normalized))
 
 if __name__ == "__main__":
     import sys
+
+    if len(sys.argv) != 2:
+        raise SystemExit(f"Usage: {sys.argv[0]} <fasta_file>")
+
     seq = read_fasta_sequence(sys.argv[1])
     print(reverse_complement(seq))
