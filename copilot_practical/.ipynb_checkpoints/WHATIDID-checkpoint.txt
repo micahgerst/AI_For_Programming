@@ -82,3 +82,7 @@ Created gc_content.py using Copilot.
 >>> Write a short markdown summary of about 100 words about scripts/gc_content.py for a new Python learner. The summary should explain both the read_fasta() and main() functions. Do not write a summary for any other function or script.
 
 It wrote a summary. Further prompting had it write the result to summary.md.
+
+>>> I made a change to scripts/gc_content.py and staged it. Examine the differences and propose a commit message less than 20 words I could use. Do not modify the the script.
+
+>>> I made a change to scripts/gc_content.py in the gc-precision branch and tried merging it with the main branch. I received an error. Explain the error I received in less than 100 words. Resolve the error so that scripts/gc_content.py prints a percentage with 2 decimal points. Do not change anything else in the script.
