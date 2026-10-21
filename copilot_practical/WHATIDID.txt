@@ -83,4 +83,4 @@ Created gc_content.py using Copilot.
 
 It wrote a summary. Further prompting had it write the result to summary.md.
 
->>> I made a change to scripts/gc_content.py and staged it. Examine the differences and propose a commit message less than 10 words I could use. Do not
+>>> I made a change to scripts/gc_content.py and staged it. Examine the differences and propose a commit message less than 20 words I could use. Do not modify the the script.
